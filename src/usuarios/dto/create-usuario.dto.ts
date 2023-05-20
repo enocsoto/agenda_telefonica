@@ -25,7 +25,4 @@ export class CreateUsuarioDto {
     @MinLength(1)
     correo: string;
 
-
-
-
 }

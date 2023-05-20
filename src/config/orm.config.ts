@@ -8,7 +8,7 @@ ConfigModule.forRoot({
 
 const configService = new ConfigService();
 export const dataSourceConfig: DataSourceOptions = {
-    
+    name: "agenda_contacto",
     type: 'mysql', // aquí debe especificar su tipo de base de datos, puede ser mysql, postgresql, sqlite, etc.
     host: configService.get('DB_HOST'),
     port: configService.get('DB_PORT'),

@@ -1,11 +1,13 @@
 import { Column, Entity, Index, OneToMany, PrimaryColumn } from "typeorm";
-import { DomiciliosEntity } from "../../domicilios/entities/domicilio.entity";
-import { TelefonosEntity } from "../../telefonos/entities/telefono.entity";
+import { DomiciliosEntity } from "./domicilio.entity";
+import { TelefonosEntity } from "./telefono.entity";
+import { BaseEntity } from "./base.entity";
+
 
 @Index("tipo_documento", ["tipoDocumento"], { unique: true })
 @Index("correo", ["correo"], { unique: true })
 @Entity("usuarios", { schema: "agendaDB" })
-export class UsuariosEntity{
+export class UsuariosEntity extends BaseEntity {
   @PrimaryColumn("uuid", { primary: true, name: "id", length: 255 })
   id: string;
 
@@ -27,9 +29,9 @@ export class UsuariosEntity{
   @Column("varchar", { name: "correo", unique: true, length: 255 })
   correo: string;
 
-  @OneToMany(() => DomiciliosEntity, (domicilios) => domicilios.usuarios)
+  @OneToMany(() => DomiciliosEntity, (domicilios) => domicilios.domicilios_usuarios)
   domicilios: DomiciliosEntity[];
 
-  @OneToMany(() => TelefonosEntity, (telefonos) => telefonos.usuarios)
+  @OneToMany(() => TelefonosEntity, (telefonos) => telefonos.telefonos_usuarios)
   telefonos: TelefonosEntity[];
 }

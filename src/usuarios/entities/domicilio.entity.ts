@@ -1,7 +1,7 @@
 import { Column, Entity, Index, JoinColumn, ManyToOne, PrimaryColumn } from "typeorm";
-import { UsuariosEntity } from "../../usuarios//entities/usuario.entity";
+import { UsuariosEntity } from "./usuario.entity";
 
-@Index("usuarios_id", ["usuariosId"], {})
+
 @Entity("domicilios", { schema: "agendaDB" })
 export class DomiciliosEntity {
   @PrimaryColumn("uuid", { primary: true, name: "id", length: 255 })
@@ -26,6 +26,5 @@ export class DomiciliosEntity {
     onDelete: "CASCADE",
     onUpdate: "RESTRICT",
   })
-  @JoinColumn([{ name: "usuarios_id", referencedColumnName: "id" }])
-  usuarios: UsuariosEntity;
+  domicilios_usuarios: UsuariosEntity;
 }

@@ -2,8 +2,6 @@ import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { UsuariosModule } from './usuarios/usuarios.module';
-import { TelefonosModule } from './telefonos/telefonos.module';
-import { DomiciliosModule } from './domicilios/domicilios.module';
 import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { dataSourceConfig } from './config/orm.config';
@@ -16,8 +14,6 @@ import { dataSourceConfig } from './config/orm.config';
     }),
     TypeOrmModule.forRoot({...dataSourceConfig}),
     UsuariosModule,
-    TelefonosModule,
-    DomiciliosModule
   ],
   controllers: [AppController],
   providers: [AppService],

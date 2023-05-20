@@ -1,0 +1,17 @@
+version: '3.9'
+
+services:
+  agendaDB:
+    image: mysql:5.7
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: 'S3CR3T'
+      MYSQL_PASSWORD: 'S3CR3T'
+      MYSQL_DATABASE: 'agendaDB'
+      MYSQL_USER: 'User_agenda'
+    expose:
+      - 3310
+    ports:
+      - "3310:3306"
+    volumes:
+      - ./data:/var/lib/mysql

@@ -3,14 +3,18 @@ import { CreateUsuarioDto } from './dto/create-usuario.dto';
 import { UpdateUsuarioDto } from './dto/update-usuario.dto';
 import { Repository } from 'typeorm';
 import { UsuariosEntity } from './entities/usuario.entity';
+import { InjectRepository } from '@nestjs/typeorm';
 
 @Injectable()
 export class UsuariosService {
-  // constructor(
-  //   private readonly usuarioRepository Repository<UsuariosEntity>
-  // ){}
-  create(createUsuarioDto: CreateUsuarioDto) {
-    return 'This action adds a new usuario';
+  constructor(
+    @InjectRepository(UsuariosEntity, 'agendaDB')
+    private readonly usuarioRepository : Repository<UsuariosEntity> ){}
+  
+    async create(createUsuarioDto: CreateUsuarioDto) {
+    const nombre = createUsuarioDto.nombre.toLowerCase();
+
+    return createUsuarioDto;
   }
 
   findAll() {

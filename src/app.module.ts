@@ -1,10 +1,11 @@
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { UsuariosModule } from './usuarios/usuarios.module';
+import { ContactosModule } from './contacto/contactos.module';
 import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { dataSourceConfig } from './config/orm.config';
+
 
 @Module({
   imports: [
@@ -13,8 +14,8 @@ import { dataSourceConfig } from './config/orm.config';
       isGlobal: true
     }),
     TypeOrmModule.forRoot({...dataSourceConfig}),
-    UsuariosModule,
-  ],
+    ContactosModule,
+    ],
   controllers: [AppController],
   providers: [AppService],
 })

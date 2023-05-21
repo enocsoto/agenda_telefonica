@@ -1,17 +1,20 @@
 import { Column, Entity, Index, JoinColumn, ManyToOne, PrimaryColumn } from "typeorm";
-import { UsuariosEntity } from "./usuario.entity";
+import { ContactoEntity } from "./contacto.entity";
 import { BaseEntity } from "./base.entity";
 
 
 @Entity("telefonos", { schema: "agendaDB" })
 export class TelefonosEntity extends BaseEntity{
 
+  // @Column("varchar", { name: "usuarios_id", nullable: true, length: 255 })
+  // usuariosId: string | null;
+  
   @Column("varchar", { name: "tipo", length: 255 })
   tipo: string;
 
-  @ManyToOne(() => UsuariosEntity, (usuarios) => usuarios.telefonos, {
+  @ManyToOne(() => ContactoEntity, (contactos) => contactos.telefonos, {
     onDelete: "CASCADE",
     onUpdate: "RESTRICT",
   })
-  telefonos_usuarios: UsuariosEntity;
+  telefonos_contactos: ContactoEntity;
 }

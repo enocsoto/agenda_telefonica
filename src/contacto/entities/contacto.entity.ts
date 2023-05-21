@@ -4,10 +4,9 @@ import { TelefonosEntity } from "./telefono.entity";
 import { BaseEntity } from "./base.entity";
 
 
-@Index("tipo_documento", ["tipoDocumento"], { unique: true })
-@Index("correo", ["correo"], { unique: true })
+@Index(["tipo_documento","correo" ], { unique: true })
 @Entity("usuarios", { schema: "agendaDB" })
-export class UsuariosEntity extends BaseEntity {
+export class ContactoEntity extends BaseEntity {
   @PrimaryColumn("uuid", { primary: true, name: "id", length: 255 })
   id: string;
 
@@ -18,7 +17,7 @@ export class UsuariosEntity extends BaseEntity {
   apellido: string;
 
   @Column("varchar", { name: "tipo_documento", unique: true, length: 50 })
-  tipoDocumento: string;
+  tipo_documento: string;
 
   @Column("varchar", { name: "numero_documento", length: 255 })
   numeroDocumento: string;
@@ -29,9 +28,9 @@ export class UsuariosEntity extends BaseEntity {
   @Column("varchar", { name: "correo", unique: true, length: 255 })
   correo: string;
 
-  @OneToMany(() => DomiciliosEntity, (domicilios) => domicilios.domicilios_usuarios)
+  @OneToMany(() => DomiciliosEntity, (domicilios) => domicilios.domicilios_contactos)
   domicilios: DomiciliosEntity[];
 
-  @OneToMany(() => TelefonosEntity, (telefonos) => telefonos.telefonos_usuarios)
+  @OneToMany(() => TelefonosEntity, (telefonos) => telefonos.telefonos_contactos)
   telefonos: TelefonosEntity[];
 }

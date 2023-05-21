@@ -1,5 +1,5 @@
-import { Column, Entity, Index, JoinColumn, ManyToOne, PrimaryColumn } from "typeorm";
-import { UsuariosEntity } from "./usuario.entity";
+import { Column, Entity, ManyToOne, PrimaryColumn } from "typeorm";
+import { ContactoEntity } from "./contacto.entity";
 
 
 @Entity("domicilios", { schema: "agendaDB" })
@@ -22,9 +22,9 @@ export class DomiciliosEntity {
   @Column("varchar", { name: "descripcion", nullable: true, length: 255 })
   descripcion: string | null;
 
-  @ManyToOne(() => UsuariosEntity, (usuarios) => usuarios.domicilios, {
+  @ManyToOne(() => ContactoEntity, (usuarios) => usuarios.domicilios, {
     onDelete: "CASCADE",
     onUpdate: "RESTRICT",
   })
-  domicilios_usuarios: UsuariosEntity;
+  domicilios_contactos: ContactoEntity;
 }

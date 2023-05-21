@@ -19,7 +19,6 @@ export const dataSourceConfig: DataSourceOptions = {
     migrations: [__dirname + '/../../migrations/*{.ts,.js}'],
     synchronize: false,
 };
-console.log(dataSourceConfig.host);
 
 
 export const AppDs = new DataSource(dataSourceConfig);

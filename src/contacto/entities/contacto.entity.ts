@@ -13,10 +13,10 @@ export class ContactoEntity extends BaseEntity {
   @Column("varchar", { name: "apellido", length: 255 })
   apellido: string;
 
-  @Column("varchar", { name: "tipo_documento", unique: true, length: 50 })
+  @Column("varchar", { name: "tipo_documento", length: 50 })
   tipo_documento: string;
 
-  @Column("varchar", { name: "numero_documento", length: 255 })
+  @Column("varchar", { name: "numero_documento", unique: true, length: 255 })
   numero_documento: string;
 
   @Column("varchar", { name: "edad", length: 30 })

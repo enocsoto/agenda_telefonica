@@ -55,10 +55,9 @@ export class ContactosService {
     return `This action removes a #${id} usuario`;
   }
   private handleExceptions(error: any) {
-    if (error.code === 11000)
-      throw new BadRequestException(`Usuario exists in bd ${JSON.stringify(error.keyValue)}`);
+    if (error.errno === 1062){
 
-    console.log(error);
-    throw new InternalServerErrorException(`Can't create User - Chek server Logs`)
+      throw new BadRequestException(`Usuario exists in bd ${JSON.stringify(error.sqlMessage)}`);
+    }
   }
 }

@@ -1,11 +1,10 @@
-import { Column, Entity, ManyToOne, PrimaryColumn } from "typeorm";
+import { Column, Entity, ManyToOne } from "typeorm";
 import { ContactoEntity } from "./contacto.entity";
+import { BaseEntity } from "./base.entity";
 
 
 @Entity("domicilios", { schema: "agendaDB" })
-export class DomiciliosEntity {
-  @PrimaryColumn("uuid", { primary: true, name: "id", length: 255 })
-  id: string;
+export class DomiciliosEntity extends BaseEntity{
 
   @Column("varchar", { name: "usuarios_id", length: 255 })
   usuariosId: string;

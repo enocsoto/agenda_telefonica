@@ -5,6 +5,7 @@ import { Repository } from 'typeorm';
 import { ContactoEntity } from './entities/contacto.entity';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Telefonos } from '../../output/entities/Telefonos';
+import { Domicilios } from '../../output/entities/Domicilios';
 
 @Injectable()
 export class ContactosService {
@@ -33,11 +34,14 @@ export class ContactosService {
       contacto = await this.usuarioRepository.findOne({
         where: {
           correo: term.toLowerCase().trim(),
-          numeroDocumento: term.toLowerCase().trim()
+          numero_documento: term.toLowerCase().trim()
         }
       });
-    }else{
+    }if(term[0] ){
       contacto = await this.usuarioRepository.createQueryBuilder('contacto').where({Telefonos}).getOne()
+    }else{
+      contacto = await this.usuarioRepository.createQueryBuilder('domicilio').where({Domicilios}).getOne()
+
     }
   
     return contacto;

@@ -7,9 +7,6 @@ import { BaseEntity } from "./base.entity";
 @Index(["tipo_documento","correo" ], { unique: true })
 @Entity("usuarios", { schema: "agendaDB" })
 export class ContactoEntity extends BaseEntity {
-  @PrimaryColumn("uuid", { primary: true, name: "id", length: 255 })
-  id: string;
-
   @Column("varchar", { name: "nombre", length: 50 })
   nombre: string;
 
@@ -20,7 +17,7 @@ export class ContactoEntity extends BaseEntity {
   tipo_documento: string;
 
   @Column("varchar", { name: "numero_documento", length: 255 })
-  numeroDocumento: string;
+  numero_documento: string;
 
   @Column("varchar", { name: "edad", length: 30 })
   edad: string;

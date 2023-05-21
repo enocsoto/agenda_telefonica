@@ -6,8 +6,8 @@ import { BaseEntity } from "./base.entity";
 @Entity("telefonos", { schema: "agendaDB" })
 export class TelefonosEntity extends BaseEntity{
 
-  // @Column("varchar", { name: "usuarios_id", nullable: true, length: 255 })
-  // usuariosId: string | null;
+  @Column("varchar", { name: "usuarios_id", nullable: true, length: 255 })
+  usuariosId: string | null;
   
   @Column("varchar", { name: "tipo", length: 255 })
   tipo: string;

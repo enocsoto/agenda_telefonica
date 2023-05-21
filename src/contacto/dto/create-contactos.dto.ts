@@ -1,4 +1,4 @@
-import { IsEmail, IsNotEmpty, IsString, MinLength, min } from "class-validator";
+import { IsArray, IsEmail, IsNotEmpty, IsString, Min, MinLength } from "class-validator";
 
 export class CreateContactoDto {
     @IsNotEmpty()
@@ -31,4 +31,11 @@ export class CreateContactoDto {
     @MinLength(1)
     correo: string;
 
+    @IsNotEmpty()
+    @IsArray()
+    telefonos: [];
+
+    @IsNotEmpty()
+    @IsArray()
+    domicilios: [];
 }
